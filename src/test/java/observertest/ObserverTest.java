@@ -96,7 +96,7 @@ public class ObserverTest {
 
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
 
-    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+    SharedFlyweightSubject subject = (SharedFlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
     subject.setState(1);
     
     SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
@@ -110,7 +110,7 @@ public class ObserverTest {
 
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
 
-    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+    SharedFlyweightSubject subject = (SharedFlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
     subject.setState(1);
     
     SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
