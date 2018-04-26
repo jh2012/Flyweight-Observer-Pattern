@@ -71,27 +71,26 @@ public class FlyweightTest {
   @Test
   public void testGetState() {
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
-    FlyweightObserverFactory fwOFactory = new FlyweightObserverFactory();
+
+    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+
+    UnSharedFlyweightObserver observer = new UnSharedFlyweightObserver(subject);
+    subject.attach(observer);
+    subject.setState(0);
     
-    FlyweightSubject fS1 = (FlyweightSubject) fwSFactory.getSubject("Key1", "1");
-    FlyweightObserver fO1 = (UnSharedFlyweightObserver) fwOFactory.getObserver("Key1", fS1);
-    
-    fS1.attach(fO1);
-    
-    assertEquals(((FlyweightObserver) fO1).getWhatObserverKnows(), fS1.getState());
+    assertEquals(subject.getState(), ((FlyweightObserver) observer).getWhatObserverKnows());
   }
   
   @Test
   public void testSetState() {
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
-    FlyweightObserverFactory fwOFactory = new FlyweightObserverFactory();
-    
-    FlyweightSubject fS1 = (FlyweightSubject) fwSFactory.getSubject("Key1", "1");
-    FlyweightObserver fO1 = (UnSharedFlyweightObserver) fwOFactory.getObserver("Key1", fS1);
-    
-    fS1.attach(fO1);
-    fS1.setState(0);
-    
-    assertEquals(((FlyweightObserver) fO1).getWhatObserverKnows(), 0);
+
+    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+
+    UnSharedFlyweightObserver observer = new UnSharedFlyweightObserver(subject);
+    subject.attach(observer);
+    subject.setState(1);
+
+    assertEquals(1, ((FlyweightObserver) observer).getWhatObserverKnows());
   }
 }
