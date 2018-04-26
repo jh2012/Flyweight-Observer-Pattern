@@ -99,7 +99,7 @@ public class ObserverTest {
     SharedFlyweightSubject subject = (SharedFlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
     subject.SharedFlyweightSubject(1);
     
-    SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
+    SharedFlyweightObserver observer = new SharedFlyweightObserver((SharedFlyweightSubject) subject);
     observer.update();
 
     assertEquals(1, ((SharedFlyweightObserver) observer).getWhatObserverKnows());
@@ -113,7 +113,7 @@ public class ObserverTest {
     SharedFlyweightSubject subject = (SharedFlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
     subject.SharedFlyweightSubject(1);
     
-    SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
+    SharedFlyweightObserver observer = new SharedFlyweightObserver((SharedFlyweightSubject) subject);
 
     assertNotEquals(1, ((SharedFlyweightObserver) observer).getWhatObserverKnows());
   }
