@@ -90,4 +90,31 @@ public class ObserverTest {
     assertEquals(0, ((FlyweightObserver) observer2).getWhatObserverKnows());
     assertEquals(0, ((FlyweightObserver) observer3).getWhatObserverKnows());
   }
+  
+  @Test
+  public void testObserverUpdate() throws CloneNotSupportedException {
+
+    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
+
+    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+    subject.setState(1);
+    
+    SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
+    observer.update()
+
+    assertEquals(1, ((SharedFlyweightObserver) observer).getWhatObserverKnows());
+  }
+  
+  @Test
+  public void testObserverNoUpdate() throws CloneNotSupportedException {
+
+    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
+
+    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+    subject.setState(1);
+    
+    SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
+
+    assertNotEquals(1, ((SharedFlyweightObserver) observer).getWhatObserverKnows());
+  }
 }
