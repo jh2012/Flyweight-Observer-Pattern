@@ -110,7 +110,7 @@ public class ObserverTest {
 
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
 
-    SharedFlyweightSubject subject = new SharedFlyweightSubject();
+    SharedFlyweightSubject subject = new SharedFlyweightSubject(0);
     subject.SharedFlyweightSubject(1);
     
     SharedFlyweightObserver observer = new SharedFlyweightObserver((SharedFlyweightSubject) subject);
