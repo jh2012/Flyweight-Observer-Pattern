@@ -59,25 +59,4 @@ public class ObserverTest {
     // observer is detached so changes are not propageted
     assertEquals(1, ((FlyweightObserver) observer).getWhatObserverKnows());
   }
-  
-  @Test
-  public void testNotifyObserver1() throws CloneNotSupportedException {
-
-    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
-
-    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
-
-    UnSharedFlyweightObserver observer1 = new UnSharedFlyweightObserver(subject);
-    UnSharedFlyweightObserver observer2 = new UnSharedFlyweightObserver(subject);
-    UnSharedFlyweightObserver observer3 = new UnSharedFlyweightObserver(subject);
-    subject.attach(observer1);
-    subject.attach(observer2);
-    subject.attach(observer3);
-    subject.setState(1);
-    subject.notifyObservers();
-
-    assertEquals(1, ((FlyweightObserver) observer1).getWhatObserverKnows());
-    assertEquals(1, ((FlyweightObserver) observer2).getWhatObserverKnows());
-    assertEquals(1, ((FlyweightObserver) observer3).getWhatObserverKnows());
-  }
 }
