@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hundredwordsgof.flyweightobserver.ObserverTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-04-26T04:04:45" hostname="LAPTOP-HB6TPSF8" time="0.001">
+  <properties/>
+  <testcase name="testObserver()" classname="com.hundredwordsgof.flyweightobserver.ObserverTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
