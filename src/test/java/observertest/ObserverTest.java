@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class ObserverTest {
 
   @Test
-  public void testObserver() throws CloneNotSupportedException {
+  public void testObserverAttach() throws CloneNotSupportedException {
 
     FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
 
@@ -22,6 +22,18 @@ public class ObserverTest {
 
     // changes via subject.setState is propagated towards observer
     assertEquals(1, ((FlyweightObserver) observer).getWhatObserverKnows());
+  }
+  
+  @Test
+  public void testObserverDettach() throws CloneNotSupportedException {
+
+    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
+
+    FlyweightSubject subject = (FlyweightSubject) fwSFactory.getSubject("ObserverTest", "testSubject");
+
+    UnSharedFlyweightObserver observer = new UnSharedFlyweightObserver(subject);
+    subject.attach(observer);
+    subject.setState(1);
 
     subject.dettach(observer);
     subject.setState(0);
