@@ -100,7 +100,7 @@ public class ObserverTest {
     subject.setState(1);
     
     SharedFlyweightObserver observer = new SharedFlyweightObserver(subject);
-    observer.update()
+    observer.update();
 
     assertEquals(1, ((SharedFlyweightObserver) observer).getWhatObserverKnows());
   }
