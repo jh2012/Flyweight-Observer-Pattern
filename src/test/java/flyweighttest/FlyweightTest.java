@@ -78,7 +78,7 @@ public class FlyweightTest {
     
     fS1.attach(fO1);
     
-    assertEquals(fO1.getWhatObserverKnows(), fS1.getState());
+    assertEquals(((FlyweightObserver) fO1).getWhatObserverKnows(), fS1.getState());
   }
   
   @Test
@@ -92,6 +92,6 @@ public class FlyweightTest {
     fS1.attach(fO1);
     fS1.setState(0);
     
-    assertEquals(fO1.getWhatObserverKnows(), 0);
+    assertEquals(((FlyweightObserver) fO1).getWhatObserverKnows(), 0);
   }
 }
