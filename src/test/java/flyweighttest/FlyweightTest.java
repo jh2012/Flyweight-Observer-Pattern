@@ -67,4 +67,31 @@ public class FlyweightTest {
       assertEquals("value3", usfS3.getState());
     }
   }
+  
+  @Test
+  public void testGetState() {
+    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
+    FlyweightObserverFactory fwOFactory = new FlyweightObserverFactory();
+    
+    FlyweightSubject fS1 = (FlyweightSubject) fwSFactory.getSubject("Key1", "1");
+    FlyweightObserver fO1 = (UnSharedFlyweightObserver) fwOFactory.getObserver("Key1", fS1);
+    
+    fS1.attach(fO1);
+    
+    assertEquals(fO1.getWhatObserverKnows(), fS1.getState());
+  }
+  
+  @Test
+  public void testSetState() {
+    FlyweightSubjectFactory fwSFactory = new FlyweightSubjectFactory();
+    FlyweightObserverFactory fwOFactory = new FlyweightObserverFactory();
+    
+    FlyweightSubject fS1 = (FlyweightSubject) fwSFactory.getSubject("Key1", "1");
+    FlyweightObserver fO1 = (UnSharedFlyweightObserver) fwOFactory.getObserver("Key1", fS1);
+    
+    fS1.attach(fO1);
+    fS1.setState(0);
+    
+    assertEquals(fO1.getWhatObserverKnows(), 0);
+  }
 }
